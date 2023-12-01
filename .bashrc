@@ -1,0 +1,20 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias vim='nvim'
+alias vi='nvim'
+
+alias q='exit'
+alias la='ls -a'
+
+alias logout='loginctl terminate-user tim'
+alias shutdown='shutdown now'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+PS1='[\u@\h \W]\$ '
+
+eval "$(starship init bash)"
