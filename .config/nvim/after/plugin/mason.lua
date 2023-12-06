@@ -8,19 +8,20 @@ require("mason").setup({
     },
     vim.api.nvim_create_user_command("MasonInstallAll", function()
         vim.cmd("MasonInstall " .. table.concat({
-            "lua-language-server",
-            "clangd",
-            "clang-format",
-            "pyright",
-            "mypy",
-            "ruff",
-            "black",
-            "jdtls",
+            "lua-language-server",  --Lua LSP
+            "clangd",               --C/CPP LSP 
+            "clang-format",         --C/CPP Formatter
+            "codelldb",             --C/CPP Debugger
+            "cpplint",              --C/CPP Linter
+            "pyright",              --Python LSP 
+            "mypy",                 --Python Diagnostics
+            "ruff",                 --Python Diagnostics 
+            "black",                --Python Formatter 
+            "debugpy",              --Python Debugger
+            "jdtls",                --Java Language Server
             "typescript-language-server",
-            "cpplint",
-            "gopls",
-            "rust-analyzer",
+            "gopls",                --Go LSP
+            "rust-analyzer",        --Rust LSP
         }, " "))
       end, {})
-    
 })

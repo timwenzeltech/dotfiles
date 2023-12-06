@@ -5,6 +5,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+setxkbmap de
 alias vim='nvim'
 alias vi='nvim'
 

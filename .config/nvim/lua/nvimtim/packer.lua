@@ -1,4 +1,4 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- This file can be loaded by calling `lua require('plugins')` from your init.vimpacker
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
@@ -10,7 +10,7 @@ return require('packer').startup(function(use)
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.4',
         -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
     -- Github color scheme
     use({
@@ -20,7 +20,7 @@ return require('packer').startup(function(use)
         end
     })
     --Treesitter:
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
     use('nvim-treesitter/playground')
     --Harpoon
     use('theprimeagen/harpoon')
@@ -34,10 +34,10 @@ return require('packer').startup(function(use)
     --NvimTree
     use {
         'nvim-tree/nvim-tree.lua',
-        requires = { 'nvim-tree/nvim-web-devicons'}
+        requires = { 'nvim-tree/nvim-web-devicons' }
     }
     --LSP Stuff:
-    use{
+    use {
         -- LSP Configuration & Plugins
         'neovim/nvim-lspconfig',
         requires = {
@@ -50,16 +50,7 @@ return require('packer').startup(function(use)
             -- Additional lua configuration, makes nvim stuff amazing!
             'folke/neodev.nvim',
         },
-    --Fidget.Nvim
-    }
-    use {
-        'j-hui/fidget.nvim',
-        tag = 'legacy',
-        config = function()
-            require("fidget").setup {
-                -- options
-            }
-        end,
+        --Fidget.Nvim
     }
     --CMP Plugins
     use('hrsh7th/nvim-cmp')
@@ -77,4 +68,22 @@ return require('packer').startup(function(use)
     use('lewis6991/gitsigns.nvim')
     --Github CoPilot
     -- use("github/copilot.vim")
-   end)
+    -- Formatter.nvim
+    use('mhartington/formatter.nvim')
+    --Lint.nvim
+    use('mfussenegger/nvim-lint')
+    --Nvim-Dap
+    use('mfussenegger/nvim-dap')
+    use {
+        'jay-babu/mason-nvim-dap.nvim',
+        dependencies = {
+            "williamboman/mason.nvim",
+            "mfussenegger/nvim-dap",
+        },
+        opts = {
+            handlers = {},
+        },
+    }
+    use('rcarriga/nvim-dap-ui')
+    use('mfussenegger/nvim-dap-python')
+end)
