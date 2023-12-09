@@ -15,12 +15,53 @@ require("formatter").setup {
             -- "formatter.filetypes.lua" defines default configurations for the
             -- "lua" filetype
             require("formatter.filetypes.lua").stylua,
+            function()
+                -- Supports conditional formatting
+                if util.get_current_buffer_file_name() == "special.lua" then
+                    return nil
+                end
+
+                -- Full specification of configurations is down below and in Vim help
+                -- files
+                return {
+                    exe = "stylua",
+                    args = {
+                        "--search-parent-directories",
+                        "--stdin-filepath",
+                        util.escape_path(util.get_current_buffer_file_path()),
+                        "--",
+                        "-",
+                    },
+                    stdin = true,
+                }
+            end
         },
         c = {
-            require("formatter.filetypes.lua").clang_format,
+            require("formatter.filetypes.c").clang_format,
         },
         python = {
-            require("formatter.filetypes.lua").black,
+            require("formatter.filetypes.python").ruff,
+            function()
+                return {
+                    exe = "ruff",
+                    args = { "format", "-q", "-" },
+                    stdin = true,
+                }
+            end
+        },
+        java = {
+            require("formatter.filetypes.java").google_java_format,
+            function()
+                return {
+                    exe = "google-java-format",
+                    args = {
+                        "--aosp",
+                        util.escape_path(util.get_current_buffer_file_path()),
+                        "--replace"
+                    },
+                    stdin = true
+                }
+            end
         },
         -- Use the special "*" filetype for defining formatter configurations on
         -- any filetype
@@ -29,5 +70,5 @@ require("formatter").setup {
             -- filetype
             require("formatter.filetypes.any").remove_trailing_whitespace
         }
-    }
+    },
 }

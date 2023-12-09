@@ -19,6 +19,9 @@ require("mason").setup({
             "black",                --Python Formatter 
             "debugpy",              --Python Debugger
             "jdtls",                --Java Language Server
+            "checkstyle",           --Java Linter but borderline useless cus stylechecks
+            "sonarlint-language-server",    --Java Liter
+            "google-java-format",   --Java Formatter
             "typescript-language-server",
             "gopls",                --Go LSP
             "rust-analyzer",        --Rust LSP

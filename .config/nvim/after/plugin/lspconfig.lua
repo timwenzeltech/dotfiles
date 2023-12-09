@@ -7,7 +7,7 @@ local on_attach = on_attach
 lspconfig.pyright.setup {
     capabilities = capabilities,
     on_attach = on_attach,
-    settings = {}
+    filetype = {"python"},
 }
 lspconfig.clangd.setup {
     capabilities = capabilities,
