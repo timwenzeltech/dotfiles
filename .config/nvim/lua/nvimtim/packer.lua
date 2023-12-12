@@ -71,8 +71,6 @@ return require("packer").startup(function(use)
 	use("tpope/vim-fugitive")
 	--Gitsigns
 	use("lewis6991/gitsigns.nvim")
-	--Github CoPilot
-	-- use("github/copilot.vim")
 	-- Conform.nvim
 	use("stevearc/conform.nvim")
 	--Lint.nvim
@@ -92,4 +90,5 @@ return require("packer").startup(function(use)
 	use("rcarriga/nvim-dap-ui")
 	use("mfussenegger/nvim-dap-python")
 	use("christoomey/vim-tmux-navigator")
+	use("github/copilot.vim")
 end)
